@@ -1,0 +1,22 @@
+lass Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int left=0 ,right=0,l=0;
+         unordered_set<char>mp;
+         while(right<s.length())
+         {
+            if(mp.find(s[right])==mp.end())
+            {
+                mp.insert(s[right]);
+           l=max(l,right-left+1);      
+                right++;
+            }
+            else
+            {
+                mp.erase(s[left]);
+                left++;
+            }
+         }
+return l;
+    }
+};
