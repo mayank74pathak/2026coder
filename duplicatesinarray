@@ -1,0 +1,12 @@
+int removeDuplicates(vector<int>& nums) {
+        int n=nums.size();
+        int currentindex=1;
+        int sortedindex=0;
+        while(currentindex<n)
+        {
+            if(nums[sortedindex]!=nums[currentindex])
+            nums[++sortedindex]=nums[currentindex];
+            currentindex++;
+        }
+    return sortedindex+1;
+    }
