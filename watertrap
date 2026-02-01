@@ -1,0 +1,80 @@
+Algorithm TRAP_RAIN_WATER(height)
+
+Input: height → array of non-negative integers
+Output: total trapped water
+
+1. n ← size of height array
+2. leftMax ← 0
+3. rightMax ← 0
+4. maxHeight ← height[0]
+5. index ← 0
+6. water ← 0
+
+// Step 1: Find index of maximum height
+7. for i ← 1 to n-1 do
+8.     if height[i] > maxHeight then
+9.         maxHeight ← height[i]
+10.        index ← i
+11.    end if
+12. end for
+
+// Step 2: Calculate trapped water on left side of max height
+13. for i ← 0 to index-1 do
+14.     if leftMax > height[i] then
+15.         water ← water + (leftMax - height[i])
+16.     else
+17.         leftMax ← height[i]
+18.     end if
+19. end for
+
+// Step 3: Calculate trapped water on right side of max height
+20. for i ← n-1 down to index+1 do
+21.     if rightMax > height[i] then
+22.         water ← water + (rightMax - height[i])
+23.     else
+24.         rightMax ← height[i]
+25.     end if
+26. end for
+
+27. return water
+
+
+
+
+code 
+
+int trap(vector<int>& height) {
+      int n=height.size();
+      int leftmax=0,rightmax=0,maxheight=height[0],index=0,water=0;
+      for(int i=1;i<n;i++)
+      {
+        if(height[i]>maxheight)
+         
+         {
+            maxheight=height[i];
+             index=i;
+         }
+      }  
+     for (int i=0;i<index;i++)
+     {
+         if(leftmax>height[i])
+         {
+              water+=leftmax-height[i];
+         }
+         else
+         leftmax=height[i];
+        
+     }
+     for(int i=n-1;i>index;i--)
+     {
+        if(rightmax>height[i])
+        {
+            water+=rightmax-height[i];
+            
+        }
+        else
+        rightmax=height[i];
+     
+     }
+  return water;  
+    }
