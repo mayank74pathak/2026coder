@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class MinHeap {
+    vector<int> heap;
+
+public:
+    void insert(int value) {
+        // Step 1: Insert at end
+        heap.push_back(value);
+
+        int index = heap.size() - 1;
+
+        // Step 2: Heapify Up
+        while (index > 0) {
+            int parent = (index - 1) / 2;
+
+            if (heap[parent] > heap[index]) {
+                swap(heap[parent], heap[index]);
+                index = parent;
+            } else {
+                break;
+            }
+        }
+    }
+
+    void printHeap() {
+        for (int val : heap)
+            cout << val << " ";
+        cout << endl;
+    }
+};
+
+int main() {
+    MinHeap h;
+
+    h.insert(10);
+    h.insert(20);
+    h.insert(15);
+    h.insert(5);
+
+    cout << "Heap elements: ";
+    h.printHeap();
+
+    return 0;
+}
