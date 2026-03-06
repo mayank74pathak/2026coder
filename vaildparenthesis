@@ -1,0 +1,26 @@
+bool isValid(string s) {
+      stack<char>p;
+      for(auto it:s)
+      {
+        if(it=='[' or it=='{' or it=='(')
+        {
+            p.push(it);
+        }
+        else if(p.empty())
+        return false;
+        else if((p.top()=='[' and it==']') or (p.top()=='{' and it=='}')or(p.top()=='(' and it==')'))
+        {
+            p.pop();
+        }
+        else
+        return false;
+      }  
+    if(p.empty())
+    return true;
+
+    return false;
+    
+    }
+
+                 O(N)TC
+                 O(N)SC
